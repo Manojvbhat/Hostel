@@ -13,3 +13,74 @@
 	color: rgb(28, 90, 247);
 }
 
+.sidemenu {
+    height: 100%;
+    margin-bottom: 0%;
+    list-style: none;
+    padding: 0%;
+}
+
+.side-menu-elements {
+    display: flex;
+    align-items: center;
+    height: 50px;
+}
+.side-menu-elements:hover {
+    background-color: rgba(22, 91, 83, 0.282);
+    border-radius: 10px;
+}
+.side-menu-elements i {
+    padding-left: 4%;
+}
+.side-menu-txt {
+    width: 100px;
+    padding-left: 7%;
+}
+.side-menu-txt a {
+    color: rgb(5, 5, 5);
+    text-decoration: none;
+}
+
+.row {
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+.description-hostel {
+    text-align: center;
+    padding-top: 5%;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+.description-hostel h3 {
+    color: rgb(251, 151, 108);
+    font-family: Poppins, sans-serif;
+}
+
+.desc-img img {
+    border-radius: 10px;
+}
+
+.row {
+    margin-left: 50px;
+    margin-right: 50px;
+}
+.right {
+    margin-right: 100px;
+}
+
+.card img {
+    margin-left: 125px;
+    margin-top: -125px;
+    height: 250px;
+    width: 250px;
+    border-radius: 50%;
+}
+
+.card {
+    background-color: rgb(250, 249, 244);
+    box-shadow: rgb(210, 210, 210) 10px 10px 5px -5px;
+    height: 450px;
+    border-radius: 15px;
+}
