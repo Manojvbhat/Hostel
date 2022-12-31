@@ -1,4 +1,6 @@
-
+body{
+    background-color: rgba(251, 254, 254, 0.823);
+}
 .nav1{
 	background-color: rgb(255, 255, 255);
 	box-shadow: 0px 1px 10px rgb(145, 145, 145) ;
@@ -12,7 +14,15 @@
 	font-family: 'Montserrat', sans-serif;
 	color: rgb(28, 90, 247);
 }
+.navbar-right{
+    font-family: 'Poppins', sans-serif;
+}
+.navbar-right a:hover{
+ background-color: rgba(127, 127, 127, 0.179);
+ border-radius: 15px;
+}
 
+/* side menu */
 .sidemenu {
     height: 100%;
     margin-bottom: 0%;
@@ -26,7 +36,7 @@
     height: 50px;
 }
 .side-menu-elements:hover {
-    background-color: rgba(22, 91, 83, 0.282);
+    background-color: rgba(92, 94, 100, 0.282);
     border-radius: 10px;
 }
 .side-menu-elements i {
@@ -49,11 +59,11 @@
 .description-hostel {
     text-align: center;
     padding-top: 5%;
-    padding-left: 5%;
-    padding-right: 5%;
+    padding-left: 3.9%;
+    padding-right: 3.9%;
 }
 
-.description-hostel h3 {
+.description-hostel h2 {
     color: rgb(251, 151, 108);
     font-family: Poppins, sans-serif;
 }
@@ -62,12 +72,13 @@
     border-radius: 10px;
 }
 
+/* staff details */
 .row {
     margin-left: 50px;
     margin-right: 50px;
 }
 .right {
-    margin-right: 100px;
+    margin-right: 120px;
 }
 
 .card img {
@@ -79,8 +90,12 @@
 }
 
 .card {
-    background-color: rgb(250, 249, 244);
+    background-color: rgb(255, 255, 255);
     box-shadow: rgb(210, 210, 210) 10px 10px 5px -5px;
     height: 450px;
     border-radius: 15px;
+}
+
+footer{
+    background-color: rgb(86, 14, 155);
 }

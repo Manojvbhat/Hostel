@@ -1,38 +1,35 @@
 <%-include("Header")-%>
 <body>
-	<div>
+	
 		<%-include("Nav") -%> 
-	</div>
+	
   <div>
 	<%-include("sidebar.ejs")-%>
   </div>
+  <div style="height: 10px;"></div>
    <%- include("Slideshow.ejs") -%> 
-   <br>
-   <br>
-<div class="container">
-	<div class="row">
-	<div class="col description-hostel">
-	<h3>Welcome to JSS Boys Hostel</h3>
-	<p>Jss boys hostel Mysure. It is located inside the university campus.
-	From UG to PG students choose JSS hostel. Very nice environment.Good infrastrucures.Very supportive staffs.Some more bluffs to fill the content
-	so that it can match with the image.
-	</p>
-	</div>
-	<div class="col desc-img">
-	<img src="/images/hostel-rooms.jpg" alt="" height="350px">
+   <div style="height: 150px;"></div>
+    <div class="container">
+		<div class="row">
+		<div class="col description-hostel">
+		<h2>Welcome to JSS Boys Hostel</h2>
+		<p>Jss boys hostel Mysure. It is located inside the university campus.
+		From UG to PG students choose JSS hostel. Very nice environment.Good infrastrucures.Very supportive staffs.Some more bluffs to fill the content
+		so that it can match with the image.
+		</p>
+		</div>
+		<div class="col desc-img">
+		<img src="/images/hostel-rooms.jpg" alt="" height="350px">
+    	</div>
+	  </div>
     </div>
+	<div class="d-flex justify-content-center" style="height: 300px;">
 	</div>
-	</div>
-	<div style="height: 250px;">
-	<br>
-	<br>
-	<br>
-	<br>
-	<br><br><br><br><br><br>
-		<%- include("staffcards") -%> 
-		<%- include("Footer")  -%> 
 
-		<br><br><br>
+		<%- include("staffcards") -%> 
+		<div style="height: 100px;"></div>
+
+		<div><%- include("Footer")  -%> </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
 
 </body>
