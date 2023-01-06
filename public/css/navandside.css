@@ -1,0 +1,67 @@
+body{
+    background-color: #ffffff;
+}
+.nav1{
+	background-color: #14213dea;
+	box-shadow: 0px 1px 10px rgb(255, 255, 255) ;
+}
+.hamburger
+{
+    color: aliceblue;
+}
+
+.logo{
+	height: 40px;
+	width: 40px;
+	border-radius: 50px;
+}
+.jss{
+	font-family: 'Montserrat', sans-serif;
+	color: rgb(255, 120, 62);
+    font-weight: 400;
+}
+.navbar-right a{
+    font-family: 'Poppins', sans-serif;
+    color: aliceblue;
+}
+
+.navbar-right a:hover{
+ color: orange;
+ background-color: rgba(249, 144, 63, 0.179);
+ border-radius: 15px;
+}
+
+/* side menu */
+.sidemenu {
+    height: 100%;
+    margin-bottom: 0%;
+    list-style: none;
+    padding: 0%;
+}
+
+.offcanvas
+{
+    background-color: #1d2a58;
+}
+
+.side-menu-elements {
+    color: aliceblue;
+    display: flex;
+    align-items: center;
+    height: 50px;
+}
+.side-menu-elements:hover {
+    background-color: rgba(255, 255, 255, 0.368);
+    border-radius: 10px;
+}
+.side-menu-elements i {
+    padding-left: 4%;
+}
+.side-menu-txt {
+    width: 100px;
+    padding-left: 7%;
+}
+.side-menu-txt a {
+    color:rgb(255, 249, 240);
+    text-decoration: none;
+}

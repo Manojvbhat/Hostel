@@ -1,0 +1,242 @@
+<html lang="en">
+
+<head>
+	<%-include("../Homepage/Header") -%> 
+
+	<link rel="stylesheet" href="/css/navandside.css">
+	<link rel="stylesheet" href="/css/navandside.css">
+</head>
+
+<body>
+	<%-include("../Homepage/Nav") -%> 
+	<div>
+    <%-include("../Homepage/sidebar")-%>
+    </div>
+        <h1>Student Registaration Form</h1>
+        <div class="container">
+            <div class="row">
+                <div class="col-10">
+                    <label for="srno">SR number:</label>
+                </div>
+                <div class="col-90">
+                    <input type="tel" id="srno" name="SRnumber" placeholder="Enter your sr number">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-10">
+                    <label for="srno">USN:</label>
+                </div>
+                <div class="col-90">
+                    <input type="tel" id="usn" name="usn" placeholder="Enter your usn">
+                </div>
+            </div>
+            <!-- <div class="row">
+                <div class="col-10">
+                    <label for="fname">First Name:</label>
+                </div>
+                <div class="col-90">
+                    <input type="text" id="fname" name="firstname" placeholder="Enter your first name">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-10">
+                    <label for="lname">Last Name:</label>
+                </div>
+                <div class="col-90">
+                    <input type="text" id="lname" name="lastname" placeholder="Enter your last name">
+                </div>
+            </div>
+            -->
+            <!-- <div class="row">
+                <div class="col-xs-12 col-sm-6">
+                  <div class="form-group">
+                    <label>First Name<span class="req">*</span> </label>
+                    <input type="text" class="form-control" id="first_name" required data-validation-required-message="Please enter your name." autocomplete="off">
+                    <p class="help-block text-danger"></p>
+                  </div>
+                </div>
+                <div class="col-xs-12 col-sm-6">
+                  <div class="form-group">
+                    <label> Last Name<span class="req">*</span> </label>
+                    <input type="text" class="form-control" id="last_name" required data-validation-required-message="Please enter your name." autocomplete="off">
+                    <p class="help-block text-danger"></p>
+                  </div>
+                </div>
+              </div> -->
+            <div class="row">
+                <div class="col-10">
+                    <label for="email">Email:</label>
+                </div>
+                <div class="col-90">
+                    <input type="email" id="email" name="email" placeholder="it should contain @,.">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-10">
+                    <label for="mobile">Mobile:</label>
+                </div>
+                <div class="col-90">
+                    <input type="tel" id="mobile" name="mobile" placeholder="only 10 digits are allowed">
+                </div>
+            </div>
+            <!-- <div class="row">
+                <div class="col-10">
+                    <label for="gender" required>Gender:</label>
+                </div>
+                <div class="col-90">
+                    <input type="radio" id="male" name="gender" value="male"/>Male
+                    <input type="radio" id="female" name="gender" value="female"/>Female
+                </div>
+            </div> -->
+            <div class="row">
+                <div class="col-10">
+                    <label for="dob">Date Of Birth:</label>
+                </div>
+                <div class="col-90">
+                    <input type="Date" id="dob" name="dob">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-10">
+                    <label for="qualification" required >Qualification:</label>
+                </div>
+                <div class="col-90">
+                    <select name="qualification" id="qualification">
+                        <option value=" ">Select Qualification:</option>
+                        <!-- <option value="Graduation">Graduation</option> -->
+                        <option value="BTech.">BTech.</option>
+                        <option value="MTech.">MTech.</option>
+                        <option value="MCA">MCA</option>
+                        <option value="BCA">BCA</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-10">
+                    <label for="srno">Branch:</label>
+                </div>
+                <div class="col-90">
+                    <input type="text" id="branch" name="SRnumber" placeholder="Enter your branch">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-10">
+                    <label for="srno">Semester:</label>
+                </div>
+                <div class="col-90">
+                    <input type="number" id="sem" name="Semester" placeholder="Enter your Semester">
+                </div>
+            </div>
+            <!-- <div class="row">
+                <div class="col-10">
+                    <label for="srno">Room ID:</label>
+                </div>
+                <div class="col-90">
+                    <input type="text" id="roomid" name="room id" placeholder="Enter your room id">
+                </div>
+            </div> -->
+            <div class="row">
+                <div class="col-10">
+                    <label for="city">State:</label>
+                </div>
+                <div class="col-90">
+                    <input type="text" id="city" name="city" maxlength="10">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-10">
+                    <label for="city">Country:</label>
+                </div>
+                <div class="col-90">
+                    <input type="text" id="city" name="city" maxlength="10">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-10">
+                    <label for="address">Address:</label>
+                </div>
+                <div class="col-90">
+                    <textarea name="address" id="address" cols="30" rows="10"></textarea>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-10">
+                    <label for="srno">Father Name</label>
+                </div>
+                <div class="col-90">
+                    <input type="text" id="fathername" name="Father name" placeholder="Enter your father name">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-10">
+                    <label for="srno">Mother Name</label>
+                </div>
+                <div class="col-90">
+                    <input type="text" id="mothername" name="mother name" placeholder="Enter your mother name">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-10">
+                    <label for="mobile"> Father Mobile:</label>
+                </div>
+                <div class="col-90">
+                    <input type="tel" id="fmobile" name="mobile" placeholder="only 10 digits are allowed">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-10">
+                    <label for="mobile">Mother Mobile:</label>
+                </div>
+                <div class="col-90">
+                    <input type="tel" id="mobile" name="mobile" placeholder="only 10 digits are allowed">
+                </div>
+            </div>
+             <div class="row">
+                <label for="formFile" class="form-label">Choose a profile photo</label>
+                <input class="form-control" type="file" id="formFile">
+              </div>
+          
+            <!-- <div class="row">
+                <div class="col-10">
+                    <label for="pincode">Area PIN:</label>
+                </div>
+                <div class="col-90">
+                    <input type="number" id="pin" name="pin" maxlength="6">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-10">
+                    <label for="state">State:</label>
+                </div>
+                <div class="col-90">
+                    <input type="text" id="state" name="state">
+                </div>
+            </div> -->
+        
+            <!-- <div class="row">
+                <div class="col-10">
+                    <label for="specialization">Specialization:</label>
+                </div>
+                <div class="col-90">
+                    <input type="checkbox" class="specialization" id="cs" name="specialization[]" value="Computer Science">Computer Science<br/>
+                    <input type="checkbox" class="specialization" id="it" name="specialization[]" value="Electrical And Communication">Information Technology<br/>
+                    <input type="checkbox" class="specialization" id="ca" name="specialization[]" value=" EEE">EEE<br/>
+                    <input type="checkbox" class="specialization" id="tc" name="specialization[]" value="">Tele Communication<br/>
+                </div>
+            </div> -->
+            <div class="row">
+                <div class="col-10">
+                    <label for="password">Password:</label>
+                </div>
+                <div class="col-90">
+                    <input type="password" id="password" name="password" maxlength="8">
+                </div>
+            </div>
+            <div class="row" >
+                <input type="submit"  value="SUBMIT"  onclick="SaveStudentDetails()">
+            </div>  
+        </div>  
+		<script type="text/javascript" lang="javascript" src="./regscript.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    </body>
+</html>
