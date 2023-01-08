@@ -17,17 +17,18 @@
 		<input type="checkbox" id="chk" aria-hidden="true">
 
 		<div class="signup">
-			<form>
+			<form method="post" action="/studentlogin">
 				<!-- <br>
 				<br> -->
-				<label for="chk" aria-hidden="true"> Staff Login</label>
-				<input type="text" name="txt" placeholder="Staff ID" required="">
+				<label for="chk" aria-hidden="true"> Student Login</label>
+				<input type="text" name="srno" placeholder="SR number" required>
 				<!-- <input type="email" name="email" placeholder="Email" required=""> -->
-				<input type="password" name="pswd" placeholder="Password" required="">
+				<input type="password" name="password" placeholder="Password" required>
 
-				<button onclick="location.href='r.html'" type="button">Login</button>
+				<button  type="submit">Login</button>
 
 			</form>
+			<a href="/register" style="padding-left: 28%;">Click here to register</a>
 		</div>
 
 		<!-- <div class="login"> -->

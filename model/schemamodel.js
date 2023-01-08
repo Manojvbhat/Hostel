@@ -37,7 +37,7 @@ const studentschema=new mongoose.Schema(
 			required:true
 		},
 		dob:{
-			type:Date,
+			type:String,
 			required:true
 		},
 		course:
@@ -254,5 +254,6 @@ const Room=mongoose.model("Room",roomschema);
 const Student =mongoose.model("Student",studentschema);
 
 //exporting model
-module.exports=Room;
-module.exports=Student;
+// module.exports.studentschema=studentschema;
+module.exports={Room,Student,Log,Fee,Staff,Complaint,Announcement};
+
