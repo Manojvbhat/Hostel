@@ -74,7 +74,11 @@ button:hover{
 	color: purple;
 	transform: scale(.6);
 }
-
+.false
+{
+	border: 2px solid rgba(255, 0, 0, 0.581);
+	
+}
 #chk:checked ~ .login{
 	transform: translateY(-500px);
 }

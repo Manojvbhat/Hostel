@@ -18,12 +18,9 @@
 
 		<div class="signup">
 			<form method="post" action="/studentlogin">
-				<!-- <br>
-				<br> -->
-				<label for="chk" aria-hidden="true"> Student Login</label>
-				<input type="text" name="srno" placeholder="SR number" required>
-				<!-- <input type="email" name="email" placeholder="Email" required=""> -->
-				<input type="password" name="password" placeholder="Password" required>
+				<label  for="chk" aria-hidden="true"> Student Login</label>
+				<input  class="<%= valid %> " type="text" name="srno" placeholder="SR number" required>
+				<input class="<%= valid  %> " type="password" name="password" placeholder="Password" required>
 
 				<button  type="submit">Login</button>
 
@@ -31,17 +28,10 @@
 			<a href="/register" style="padding-left: 28%;">Click here to register</a>
 		</div>
 
-		<!-- <div class="login"> -->
-			<form>
-				<!-- <label for="chk" aria-hidden="true">Login</label> -->
-                <!-- <br>
-                <br>
-				<input type="email" name="email" placeholder="Email" required="">
-				<input type="password" name="pswd" placeholder="Password" required=""> -->
-				<!-- <button>Login</button> -->
-			</form>
+		
 		</div>
 	</div>
+	
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
 </body>
 

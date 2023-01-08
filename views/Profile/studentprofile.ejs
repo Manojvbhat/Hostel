@@ -1,0 +1,196 @@
+<html lang="en">
+<head>
+	<%-include("../Homepage/Header") -%> 
+    <link rel="stylesheet" href="/css/profile.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+	<link rel="stylesheet" href="/css/navandside.css">
+    <title>Document</title>
+</head>
+<body>
+	<%-include("../Homepage/Nav") -%> 
+	<div>
+    <%-include("../Homepage/sidebar")-%>
+    </div>
+    <div class="container">
+        <div class="main-body"> 
+              <!-- Second Part -->
+        
+              <div class="row gutters-sm">
+                <div class="col-md-4 mb-3">
+                  <div class="card">
+                    <div class="card-body">
+                      <div class="rows">
+						<img src="data:image/<%=std.profileimage.contentType%>;base64,
+						<%=std.profileimage.data.toString('base64')%>" class="clickable-image profile" width="150">
+                        <div class="text-box" align="center">
+                          <h3><%= std.firstname %> <%= std.lastname %> </h3>
+                          <p><%= std.usn %> </p>
+                          <p><%= std.mobilenum %></p>
+                          <p>  </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-8">
+                  <div class="card mb-3">
+                    <div class="card-body">
+                      <div class="row">
+                        <div class="col-sm-3">
+                          <h5 class="mb-0" > SR NO </h5>
+                        </div>
+                        <div class="col-sm-9 text-secondary">
+                              <p><%=std.srno %></p>
+                        </div>
+                      </div>
+                      <hr>
+                      <div class="row">
+                        <div class="col-sm-3">
+                          <h5 class="mb-0" >First Name</h5>
+                        </div>
+                        <div class="col-sm-9 text-secondary">
+                            <%= std.firstname %>
+                        </div>
+                      </div>
+                      <hr>
+                      <div class="row">
+                        <div class="col-sm-3">
+                          <h5 class="mb-0" >Last Name</h6>
+                        </div>
+                        <div class="col-sm-9 text-secondary">
+                           <%= std.lastname %>
+                        </div>
+                      </div>
+                      <hr>
+                      <div class="row">
+                        <div class="col-sm-3">
+                          <h5 class="mb-0" >Email</h6>
+                        </div>
+                        <div class="col-sm-9 text-secondary">
+                          <%= std.lastname %>
+                        </div>
+                      </div>
+                      <hr>
+                      <div class="row">
+                        <div class="col-sm-3">
+                          <h5 class="mb-0" >Date of Birth</h6>
+                        </div>
+                        <div class="col-sm-9 text-secondary">
+                           <%= std.dob %>
+                        </div>
+                      </div>
+                      <hr>
+                      <div class="row">
+                        <div class="col-sm-3">
+                          <h5 class="mb-0" >Course</h5>
+                        </div>
+                        <div class="col-sm-9 text-secondary">
+                            <%=std.course%>
+                        </div>
+                      </div>
+                      <hr>
+                      <div class="row">
+                        <div class="col-sm-3">
+                          <h5 class="mb-0" >Semester</h5>
+                        </div>
+                        <div class="col-sm-9 text-secondary">
+                           <%=std.sem %>
+                        </div>
+                      </div>
+                      <hr>
+                      <div class="row">
+                        <div class="col-sm-3">
+                          <h5 class="mb-0" >State</h6>
+                        </div>
+                        <div class="col-sm-9 text-secondary">
+                            <%=std.state %>
+                        </div>
+                      </div>
+                      <hr>
+                      <div class="row">
+                        <div class="col-sm-3">
+                          <h5 class="mb-0" >Country</h5>
+                        </div>
+                        <div class="col-sm-9 text-secondary">
+                            <%= std.country %> 
+                        </div>
+                      </div>
+                      <hr>
+                      <div class="row">
+                        <div class="col-sm-3">
+                          <h5 class="mb-0" >Address </h5>
+                        </div>
+                        <div class="col-sm-9 text-secondary">
+                          <%= std.address %> 
+                        </div>
+                      </div>
+                      <hr>
+                      <div class="row">
+                        <div class="col-sm-3">
+                          <h5 class="mb-0" >Father's Name</h6>
+                        </div>
+                        <div class="col-sm-9 text-secondary">
+                          <%= std.father_name %> 
+                        </div>
+                      </div>
+                      <hr>
+                      <div class="row">
+                        <div class="col-sm-3">
+                          <h5 class="mb-0" >Mother's Name</h6>
+                        </div>
+                        <div class="col-sm-9 text-secondary">
+                         <%= std.mother_name %> 
+                        </div>
+                      </div>
+                      <hr>
+                      <div class="row">
+                        <div class="col-sm-3">
+                          <h5 class="mb-0" >Parent's Number</h6>
+                        </div>
+                        <div class="col-sm-9 text-secondary">
+                         <%= std.parentnum %> 
+                        </div>
+                      </div>
+                      <hr>
+                      <div class="row">
+                        <div class="col-sm-3">
+                          <h5 class="mb-0" >Roomates</h6>
+                        </div>
+                        <div class="col-sm-9 text-secondary">
+                          <p>200048 </p>
+						  <p>200034</p>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        <script>
+          function editImage() {
+    // create a form to allow the user to select a new image file
+    const form = document.createElement('form');
+    form.innerHTML = `
+      <input type="file" accept="image/*">
+      <button type="submit">Save</button>
+    `;
+  
+    // when the form is submitted, update the src attribute of the image
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+  
+      // get the selected file
+      const file = form.querySelector('input[type=file]').files[0];
+  
+      // update the src attribute of the image
+      const image = document.querySelector('.clickable-image');
+      image.src = URL.createObjectURL(file);
+    });
+  
+    // show the form
+    document.body.appendChild(form);
+  }
+        </script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+</body>
+</html>

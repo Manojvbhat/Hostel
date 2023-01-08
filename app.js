@@ -63,6 +63,7 @@ mongoose.connect(url, {useNewUrlParser: true, useUnifiedTopology: true })
 
 // Uploading image to database
 var multer = require('multer');
+const { query } = require("express");
 var storage = multer.diskStorage({
 	destination: (req, file, cb) => {
 		cb(null, 'upload')
@@ -120,7 +121,9 @@ app.get("/logbook",(req,res)=>
 
 app.get("/studentlogin",(req,res)=>
 {
-	res.render("loginpage/Login");
+	let valid=true;
+	valid=req.query.valid;
+	res.render("loginpage/Login",{valid});
 });
 
 app.get("/staff",(req,res)=>
@@ -136,13 +139,18 @@ app.get("/staff",(req,res)=>
 
 app.get("/stafflogin",(req,res)=>
 {
-	    res.render("loginpage/Stafflogin");
-})
+	let valid=true;
+	valid=req.query.valid;
+	    res.render("loginpage/Stafflogin",{valid});
+});
+
+//Register
 app.get("/register",(req,res)=>
 {
 	res.render("Register/Register");
 })
 
+//logout function
 app.get("/logout",(req,res)=>
 {
 	req.session.destroy(function(err){
@@ -155,22 +163,50 @@ app.get("/logout",(req,res)=>
       })
 })
 
+//Admin
+app.get("/admin",(req,res)=>
+{
+	if(req.session.loggedin && req.session.type=="staff")
+	{ res.render("Admin/admin");}
+	else{
+	 res.redirect("/stafflogin");
+	}
+})
+
+//Profile Page
+app.get("/profile",async(req,res)=>
+{
+	
+
+	if(req.session.loggedin)
+	{ 
+		let user=req.session.username;
+	let std= await Student.findOne({srno:user});
+		res.render("Profile/studentprofile",{std});
+	}
+	else{
+	 res.redirect("/studentlogin");
+	}
+})
 //Post requests
 
 //Complaint request
 app.post("/complaint",async(req,res)=>
 {
-	 
-	await Complaint.insertMany([
+	if(req.body.srno==session.username)
+	{await Complaint.insertMany([
 		{
 			
 			srno:req.body.srno,
 			complaintid:req.body.srno,
 			item:req.body.item,
 			complaint_desc:req.body.complaint
-
 		}
-	])
+	])}
+	else
+	{
+		console.log("invalid user");
+	}
 	
 	res.redirect("/");
 })
@@ -212,6 +248,7 @@ app.post("/register",upload.single("profileimage"),(req,res)=>
 //Studentlogin
 app.post("/studentlogin",async(req,res)=>
 {
+
 	// const {srno, password} = req.body
 	
  try{
@@ -225,12 +262,14 @@ app.post("/studentlogin",async(req,res)=>
 
 	if(!isMatch) {
 		//your code to tell Wrong username or password
-		res.redirect("/studentlogin");
+		let valid=encodeURIComponent("false")
+		res.redirect("/studentlogin?valid="+valid);
 		
 	} else {
 	
 		req.session.loggedin = true;
         req.session.username = user.srno;
+		req.session.type="student";
 		res.redirect("/");
 	}
 } catch (err) {
@@ -240,6 +279,7 @@ app.post("/studentlogin",async(req,res)=>
 //Staff login
 app.post("/stafflogin",async(req,res)=>
 {
+	
 	try{
 		const user= await Staff.findOne({id:req.body.id});
 		if(!user)
@@ -250,12 +290,15 @@ app.post("/stafflogin",async(req,res)=>
 		const isMatch=bcrypt.compare(req.body.password,user.password);
 		if(!isMatch)
 		{
-			res.redirect("/stafflogin");
+			let valid=encodeURIComponent("false");
+			res.redirect("/stafflogin?valid="+valid);
 		}
 		else
 		{
 			req.session.loggedin=true;
 			req.session.username=user.id;
+			req.session.type="staff";
+			res.redirect("/");
 		}
 	   }
 	   catch(err){
