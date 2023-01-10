@@ -55,7 +55,7 @@ mongoose.connect(url, {useNewUrlParser: true, useUnifiedTopology: true })
 
  
 // Student.createCollection();
-// Room.createCollection();
+ //Room.createCollection();
 // Fee.createCollection();
 // Complaint.createCollection();
  //Log.createCollection();
@@ -67,30 +67,22 @@ mongoose.connect(url, {useNewUrlParser: true, useUnifiedTopology: true })
 // ([
 // 	{
 // 		room_id:0101,
-// 		srno1:0,
-// 		srno2:0,
-// 		srno3:0,
+// 		students:[0,0,0],
 // 		filled:false
 //     },
 // 	{
 // 		room_id:0102,
-// 		srno1:0,
-// 		srno2:0,
-// 		srno3:0,
+// 		students:[0,0,0],
 // 		filled:false
 // 	},
 // 	{
 // 		room_id:0103,
-// 		srno1:0,
-// 		srno2:0,
-// 		srno3:0,
+// 		students:[0,0,0],
 // 		filled:false
 // 	},
 // 	{
 // 		room_id:0104,
-// 		srno1:0,
-// 		srno2:0,
-// 		srno3:0,
+// 		students:[0,0,0],
 // 		filled:false
 // 	}
 // ]);
@@ -263,7 +255,8 @@ app.get("/makeannouncement",(req,res)=>
 
 app.get("/roomallotment",async(req,res)=>
 {
-	await Room.updateMany({},{filled:false,srno1:0,srno2:0,srno3:0});
+	await Room.updateMany({},{ $set:{students:[]},full:false });
+	await Student.updateMany({},{room_id:0});
 
 	let studentlist=await Fee.find({});
 	//sort the array based on order 
@@ -271,66 +264,108 @@ app.get("/roomallotment",async(req,res)=>
 	{
 		return a.order-b.order
 	})
-	
-
-	for (let student of studentlist) 
+	//console.log(studentlist);
+	try{ for (let student of studentlist) 
 	{
-		console.log("hello");
-		let rmate1=student.roommate1;
-		let rmate2=student.roommate2;
-		console.log(rmate1);
-		await Fee.deleteOne({srno:rmate1});
-		await Fee.deleteOne({srno:rmate2});
-		studentlist = studentlist.filter((student) => student.srno !== rmate1 && student.srno !== rmate2);
-	}
+		let studentdata= await Student.findOne({srno:student.srno});
 
-	let studentlist1=await Fee.find({});
-	console.log(studentlist1);
-	studentlist1.sort((a,b)=>
-	{
-		return a.order-b.order
-	})
-
-	for (let student of studentlist1)
-	{
-		console.log("inside main loop");
-		let room1= await Room.findOne({room_id:student.pref1});
-		let room2= await Room.findOne({room_id:student.pref2});
-		let room3= await Room.findOne({room_id:student.pref3});
-		
-		let rooms=[room1,room2,room3];
-		console.log(rooms);
-		for (let room of rooms) {
-			console.log("inside sub loop");
-			if(room&&room.filled==false)
+		if(studentdata.room_id==0)
 		{
-			console.log("inside if ");
-			if(room.srno1!=0)
+			let prf1=await Room.findOne({room_id:student.pref1});
+			let prf2=await Room.findOne({room_id:student.pref2});
+			let prf3=await Room.findOne({room_id:student.pref3});
+			let rmate1= await Fee.findOne({srno:student.roommate1});
+			let rmate2= await Fee.findOne({srno:student.roommate2});
+			let preferences=[prf1,prf2,prf3];
+			console.log(preferences);//3 preferences
+			let roommates=[];
+			if(rmate1)
+				roommates.push(rmate1)
+			if(rmate2)
+				roommates.push(rmate2)
+
+			for (let room of preferences)
 			{
-				if(room.srno2!=0)
+				if(room.students&&(room.students).length<3)
 				{
-					await Student.updateOne({srno:student.srno},{room_id:room.room_id});
-					await Room.updateOne({room_id:room.room_id},{srno3:student.srno,filled:true});
-				}
-				else
-				{
-					await Student.updateOne({srno:student.srno},{room_id:room.room_id});
-					await Room.updateOne({room_id:room.room_id},{srno2:student.srno});
+					if((room.students).length==0)
+					{
+					  await Student.updateOne({srno:student.srno},{room_id:room.room_id});
+					  await Room.updateOne({room_id:room.room_id},{$push:{students:student.srno}});
+					  if(rmate1)
+					  {
+					  await Student.updateOne({srno:rmate1.srno},{room_id:room.room_id});
+					  await Room.updateOne({room_id:room.room_id},{$push:{students:rmate1.srno}});
+					  }
+					  if(rmate2)
+					  {
+					  await Student.updateOne({srno:rmate2.srno},{room_id:room.room_id});
+					  await Room.updateOne({room_id:room.room_id},{$push:{students:rmate2.srno}});
+					  }
+					  if(room.students.length==3)
+					  {
+						await Room.updateOne({room_id:room.room_id},{full:true})
+					  }
+					  break;
+					}
+
+					if((room.students).length ==1)
+					{
+						if((roommates).length<2)
+						{
+							await Student.updateOne({srno:student.srno},{room_id:room.room_id});
+							await Room.updateOne({room_id:room.room_id},{$push:{students:student.srno}});
+
+							if(rmate1)
+					  		{
+					  		await Student.updateOne({srno:rmate1.srno},{room_id:room.room_id});
+					  		await Room.updateOne({room_id:room.room_id},{$push:{students:rmate1.srno}});
+					  		}
+
+					  		if(rmate2)
+					  		{
+					  		await Student.updateOne({srno:rmate2.srno},{room_id:room.room_id});
+					  		await Room.updateOne({room_id:room.room_id},{$push:{students:rmate2.srno}});
+					  		
+							}
+							if(room.students.length==3)
+					  {
+						await Room.updateOne({room_id:room.room_id},{full:true})
+					  }
+					  break;
+						}
+					}
+					if(room.students.length==2)
+					{
+						await Student.updateOne({srno:student.srno},{room_id:room.room_id});
+						await Room.updateOne({room_id:room.room_id},{$push:{students:student.srno}});
+						if(room.students.length==3)
+					  {
+						await Room.updateOne({room_id:room.room_id},{full:true})
+					  }
+					  break;
+					}
 				}
 			}
-			else
-			{
-				console.log("happening");
-				await Student.updateOne({srno:student.srno},{room_id:room.room_id});
-				await Student.updateOne({srno:student.roommate1},{room_id:room.room_id});
-				await Student.updateOne({srno:student.roommate2},{room_id:room.room_id});
-				await Room.updateOne({room_id:room.room_id},{srno1:student.srno,srno2:student.roommate1,srno3:student.roommate2,filled:true});
-				break;
-			}
 		}
+
+	}
+	 let remainingstds=await Student.find({room_id:0});
+	//  let emptyrooms=await Room.find({full:false});
+		
+		for (let stds of remainingstds)
+		{
+			let room = await Room.findOne({full:false});
+			await Student.updateOne({srno:stds.srno},{room_id:room.room_id});
+			await Room.updateOne({room:room.room_id},{$push:{students:stds.srno}});
+			if((room.students.length)+1==3)
+			 await Room.updateOne({room:room.room_id},{full:true});
 		}
 		
-		
+	}
+	catch(err)
+	{
+		console.log("some error occured");
 	}
 	//await Fee.deleteMany({});
 	res.redirect("/");
@@ -343,10 +378,12 @@ app.get("/profile",async(req,res)=>
 	if(req.session.loggedin)
 	{ 
 		let user=req.session.username;
-	let std= await Student.findOne({srno:user});
-		res.render("Profile/studentprofile",{std});
+		let std= await Student.findOne({srno:user});
+		let room=await Room.findOne({room_id:std.room_id});
+		res.render("Profile/studentprofile",{std,room});
 	}
-	else{
+	else
+	{
 	 res.redirect("/studentlogin");
 	}
 })
@@ -369,6 +406,7 @@ app.post("/makeannouncement",async(req,res)=>
 //Fee payment
 app.post("/payfee",async(req,res)=>
 {
+	try{
 	let currdate = new Date().toLocaleDateString();
 	let id="63bc5bfd6de48cf6ebfa1940"
 	let sequence=await Seq.findById(id);
@@ -385,8 +423,13 @@ app.post("/payfee",async(req,res)=>
       }])
 	  sq++;
 	  await Seq.findByIdAndUpdate(id,{seq:sq});
+	}
+	catch(error)
+	{
+		console.log(error);
+	}
 	  res.redirect('https://pmny.in/lIBl9DRN9k5o');
-})
+});
 
 //Complaint request
 app.post("/complaint",async(req,res)=>
@@ -416,7 +459,7 @@ app.post("/complaint",async(req,res)=>
 //Register
 app.post("/register",upload.single("profileimage"),(req,res)=>
 {
-
+	try{
 	bcrypt.hash(req.body.password, saltRounds, async function(err, hash) {
 		 await Student.insertMany([
 			{
@@ -445,6 +488,11 @@ app.post("/register",upload.single("profileimage"),(req,res)=>
 			}
 		])
 	});
+}
+catch(err)
+{
+	console.log("Some error occured");
+}
 	res.redirect("/studentlogin");
 });
 

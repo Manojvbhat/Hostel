@@ -137,22 +137,15 @@ const roomschema=new mongoose.Schema(
 			unique:true,
 			required:true
 		},
-		srno1:
+		students:
 		{
-			type:Number
+			type:Array
 		},
-		srno2:
-		{
-			type:Number
-		},
-		srno3:
-		{
-			type:Number
-		},
-		filled:
+		full:
 		{
 			type:Boolean
 		}
+		
 
 	})
 

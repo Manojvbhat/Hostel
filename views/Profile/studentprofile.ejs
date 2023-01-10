@@ -157,8 +157,11 @@
                           <h5 class="mb-0" >Roomates</h6>
                         </div>
                         <div class="col-sm-9 text-secondary">
-                          <p>200048 </p>
-						              <p>200034</p>
+                          <% let roommates=room.students%>
+                          <% let roomies=roommates.filter((srno)=>{ %> 
+                            <% return srno!=std.srno} )%>  
+                          <p><%= roomies[0] %> </p>
+						              <p><%= roomies[1] %> </p>
                         </div>
                       </div>
                     </div>
