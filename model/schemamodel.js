@@ -92,42 +92,16 @@ const studentschema=new mongoose.Schema(
 		password:
 		{
 			type:String
+		},
+		room_id:
+		{
+			type:Number
 		}
 
 
 	}
 )
-//Room schema
-const roomschema=new mongoose.Schema(
-{
-	block_no:
-	{
-		type:Number
-	},
-	room_no:
-	{
-		type:Number,
-		required:true
-	},
-	room_id:
-	{
-		type:Number,
-		unique:true,
-		required:true
-	},
-	srno1:
-	{
-		type:Number
-	},
-	srno2:
-	{
-		type:Number
-	},
-	srno3:
-	{
-		type:Number
-	}
-})
+
 //Staff schema
 const staffschema=new mongoose.Schema({
 	id:
@@ -154,17 +128,39 @@ const staffschema=new mongoose.Schema({
 	}
 
 });
+//Room schema
+const roomschema=new mongoose.Schema(
+	{
+		room_id:
+		{
+			type:Number,
+			unique:true,
+			required:true
+		},
+		srno1:
+		{
+			type:Number
+		},
+		srno2:
+		{
+			type:Number
+		},
+		srno3:
+		{
+			type:Number
+		},
+		filled:
+		{
+			type:Boolean
+		}
+
+	})
+
 //Fee schema
 const feeschema=new mongoose.Schema({
 	srno:
 	{
 		type:Number,
-		unique:true,
-		required:true
-	},
-	utrnum:
-	{
-		type:String,
 		unique:true,
 		required:true
 	},
@@ -189,8 +185,15 @@ const feeschema=new mongoose.Schema({
 	pref3:
 	{
 		type:Number
+	},
+	roommate1:
+	{
+		type:Number
+	},
+	roommate2:
+	{
+		type:Number
 	}
-
 });
 //complaint schema
 const complaint=new mongoose.Schema(
@@ -200,7 +203,15 @@ const complaint=new mongoose.Schema(
 			type:Number,
 			required:true
 		},
-		complaintid:
+		name:
+		{
+			type:String
+		},
+		phonenumber:
+		{
+			type:Number
+		},
+		room_id:
 		{
 			type:Number
 		},
@@ -215,6 +226,16 @@ const complaint=new mongoose.Schema(
 
 	}
 );
+//sequenc schema 
+const seqschema=new mongoose.Schema(
+	{
+		seq:
+		{
+				type:Number
+		}
+		
+	}
+)
 
 //log book schema
 const logschema=new mongoose.Schema
@@ -227,9 +248,18 @@ const logschema=new mongoose.Schema
 		date:
 		{
 			type:Date
+		},
+		name:
+		{
+			type:String
+		},
+		phonenumber:
+		{
+			type:Number
 		}
 	}
 );
+
 //Announcement schema
 const announcement =new mongoose.Schema(
 	{
@@ -252,8 +282,9 @@ const Fee=mongoose.model("Fee",feeschema);
 const Staff=mongoose.model("Staff",staffschema);
 const Room=mongoose.model("Room",roomschema);
 const Student =mongoose.model("Student",studentschema);
+const Seq=mongoose.model("Seq",seqschema);
 
 //exporting model
 // module.exports.studentschema=studentschema;
-module.exports={Room,Student,Log,Fee,Staff,Complaint,Announcement};
+module.exports={Room,Student,Log,Fee,Staff,Complaint,Announcement,Seq};
 

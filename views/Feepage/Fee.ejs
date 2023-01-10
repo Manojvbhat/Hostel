@@ -2,6 +2,7 @@
   <head>
     <%-include("../Homepage/Header") -%> 
     <link rel="stylesheet" href="/css/navandside.css">
+    <link rel="stylesheet" href="/css/payfee.css">
   </head>
   <body>
     <%-include("../Homepage/Nav") -%> 
@@ -9,9 +10,61 @@
     <div>
     <%-include("../Homepage/sidebar")-%>
     </div>
-      <h1>hello world
-      
-    </h1>
+    <div class="container mt-5 mb-5 d-flex justify-content-center">
+      <form action="/payfee" method="post">
+      <div class="card px-1 py-4">
+          <div class="card-body">
+             <h5 style="margin-left: 35%;">Fee payment</h5>
+              <div class="row">
+                  <div class="col-sm-12">
+                      <div class="form-group">
+                          <!-- <label for="name">Name</label> --> <input class="form-control" type="text" name="srno" placeholder="srno" required> </div>
+                  </div>
+              </div>
+            <div class="row">
+              <div class="col-sm-12">
+                  <div class="form-group">
+                      <div class="input-group">
+                         <input class="form-control" name="prf1" type="number" placeholder="preference-1" required> </div>
+                  </div>
+              </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12">
+                <div class="form-group">
+                    <div class="input-group">
+                       <input class="form-control" name="prf2" type="number" placeholder="preference-2" required> </div>
+                </div>
+            </div>
+        </div>
+              <div class="row">
+                  <div class="col-sm-12">
+                      <div class="form-group">
+                          <div class="input-group"> <input name="prf3" class="form-control" type="number" placeholder="preference-3" required> </div>
+                      </div>
+                  </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <div class="input-group"> <input name="rm1" class="form-control" type="number" placeholder="rommate-1" required> </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <div class="input-group"> <input name="rm2" class="form-control" type="number" placeholder="rommate-2" required> </div>
+                    </div>
+                </div>
+            </div>
+              <br>
+              <button type="submit" class="btn btn-primary btn-block confirm-button" style="margin-left: 38%;">Confirm</button>
+          </div>
+      </div>
+    </form>
+  </div>
+    </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
   </body>
 </html>
